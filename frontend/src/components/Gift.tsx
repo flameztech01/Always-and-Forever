@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { 
   FaHeart, 
   FaGift, 
-  FaCopy, 
   FaCheckCircle,
   FaUniversity,
   FaUserCircle,
@@ -262,7 +261,7 @@ const Gift = () => {
       </div>
 
       {/* Custom Animations */}
-      <style jsx>{`
+      {/* <style jsx>{`
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
@@ -284,7 +283,7 @@ const Gift = () => {
         .animate-float-slow {
           animation: float-slow 8s ease-in-out infinite;
         }
-      `}</style>
+      `}</style> */}
     </section>
   );
 };

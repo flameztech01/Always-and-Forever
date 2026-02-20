@@ -199,7 +199,7 @@ const CountDown = () => {
       </div>
 
       {/* Add custom animations */}
-      <style jsx>{`
+      {/* <style jsx>{`
         @keyframes spin-slow {
           from {
             transform: rotate(0deg);
@@ -222,7 +222,7 @@ const CountDown = () => {
         .animate-float {
           animation: float 6s ease-in-out infinite;
         }
-      `}</style>
+      `}</style> */}
     </section>
   );
 };

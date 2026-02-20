@@ -1,12 +1,8 @@
-import React from 'react';
 import { 
   FaHeart, 
   FaRing, 
-  FaGlassCheers, 
   FaCalendarAlt, 
   FaClock, 
-  FaMapMarkerAlt, 
-  FaEnvelope, 
   FaPhone, 
   FaRegEnvelope,
   FaStar,
@@ -16,9 +12,6 @@ import {
   MdAttractions, 
   MdChurch, 
   MdRestaurant, 
-  MdLocationOn,
-  MdAccessTime,
-  MdDateRange,
   MdCelebration 
 } from 'react-icons/md';
 import { GiFlowerTwirl } from 'react-icons/gi';
@@ -124,7 +117,7 @@ const Details = () => {
 
         {/* Events Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-          {events.map((event, index) => (
+          {events.map((event) => (
             <div
               key={event.id}
               className="group relative"
@@ -264,7 +257,7 @@ const Details = () => {
       </div>
 
       {/* Custom Animations */}
-      <style jsx>{`
+      {/* <style jsx>{`
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
@@ -286,7 +279,7 @@ const Details = () => {
         .animate-float-slow {
           animation: float-slow 8s ease-in-out infinite;
         }
-      `}</style>
+      `}</style> */}
     </section>
   );
 };

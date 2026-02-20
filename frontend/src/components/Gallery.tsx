@@ -264,7 +264,7 @@ const Gallery = () => {
       )}
 
       {/* Custom Animations */}
-      <style jsx>{`
+      {/* <style jsx>{`
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
@@ -286,7 +286,7 @@ const Gallery = () => {
         .animate-float-slow {
           animation: float-slow 8s ease-in-out infinite;
         }
-      `}</style>
+      `}</style> */}
     </section>
   );
 };

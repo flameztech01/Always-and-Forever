@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { 
   FaHeart, 
   FaMapMarkerAlt, 
@@ -10,7 +10,7 @@ import {
   FaRegBuilding,
   FaStar
 } from 'react-icons/fa';
-import { MdLocationOn, MdDirections, MdLocalParking, MdAccessibility } from 'react-icons/md';
+import { MdLocationOn, MdLocalParking, MdAccessibility } from 'react-icons/md';
 import { GiFlowerTwirl } from 'react-icons/gi';
 
 const Venue = () => {
@@ -253,7 +253,7 @@ const Venue = () => {
       </div>
 
       {/* Custom Animations */}
-      <style jsx>{`
+      {/* <style jsx>{`
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
@@ -275,7 +275,7 @@ const Venue = () => {
         .animate-float-slow {
           animation: float-slow 8s ease-in-out infinite;
         }
-      `}</style>
+      `}</style> */}
     </section>
   );
 };
