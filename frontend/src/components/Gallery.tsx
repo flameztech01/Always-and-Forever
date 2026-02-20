@@ -106,9 +106,9 @@ const Gallery = () => {
   // ============================================
   // FILTER OPTIONS (optional - based on your data)
   // ============================================
-  const [filterCategory, setFilterCategory] = useState('all');
+  const [filterCategory] = useState('all');
   
-  const categories = ['all', ...new Set(galleryData.map(item => item.category))];
+  
   
   const filteredImages = filterCategory === 'all' 
     ? galleryData 
