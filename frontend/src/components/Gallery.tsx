@@ -6,12 +6,116 @@ const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  // Create 9 items with the same couple.jpg image
-  const galleryImages = Array(9).fill({
-    src: '/couples.jpg',
-    alt: 'Couple portrait',
-    title: 'Beautiful Moments'
-  });
+  // ============================================
+  // MOCK DATABASE - EASILY EDITABLE
+  // Just update this array with your images
+  // ============================================
+  const galleryData = [
+    {
+      id: 1,
+      src: '/couples.jpeg',
+      alt: 'Romantic couple portrait in golden hour',
+      title: 'Golden Sunset',
+      category: 'Couple',
+      location: 'Beach',
+      date: 'Spring 2024',
+      featured: true
+    },
+    {
+      id: 2,
+      src: '/couples2.jpeg',
+      alt: 'Candid moment of couple laughing',
+      title: 'Joyful Laughter',
+      category: 'Candid',
+      location: 'Garden',
+      date: 'Spring 2024',
+      featured: true
+    },
+    {
+      id: 3,
+      src: '/couples3.jpeg',
+      alt: 'Couple holding hands',
+      title: 'Hand in Hand',
+      category: 'Romantic',
+      location: 'Park',
+      date: 'Spring 2024',
+      featured: false
+    },
+    {
+      id: 4,
+      src: '/couples4.jpeg',
+      alt: 'Couple dancing',
+      title: 'First Dance',
+      category: 'Celebration',
+      location: 'Venue',
+      date: 'Spring 2024',
+      featured: true
+    },
+    {
+      id: 5,
+      src: '/couples5.jpeg',
+      alt: 'Couple sharing an intimate moment',
+      title: 'Tender Moment',
+      category: 'Intimate',
+      location: 'Garden',
+      date: 'Spring 2024',
+      featured: false
+    },
+    {
+      id: 6,
+      src: '/couples6.jpeg',
+      alt: 'Couple walking through fields',
+      title: 'Endless Love',
+      category: 'Outdoor',
+      location: 'Meadow',
+      date: 'Summer 2024',
+      featured: true
+    },
+    {
+      id: 7,
+      src: '/couples7.jpeg',
+      alt: 'Couple portrait with city background',
+      title: 'City Lights',
+      category: 'Urban',
+      location: 'Downtown',
+      date: 'Summer 2024',
+      featured: false
+    },
+    {
+      id: 8,
+      src: '/couples8.jpeg',
+      alt: 'Couple under fairy lights',
+      title: 'Magical Evening',
+      category: 'Evening',
+      location: 'Garden',
+      date: 'Summer 2024',
+      featured: true
+    },
+    {
+      id: 9,
+      src: '/couples9.jpeg',
+      alt: 'Couple embracing',
+      title: 'Forever Embrace',
+      category: 'Romantic',
+      location: 'Beach',
+      date: 'Summer 2024',
+      featured: true
+    }
+  ];
+
+  // ============================================
+  // FILTER OPTIONS (optional - based on your data)
+  // ============================================
+  const [filterCategory, setFilterCategory] = useState('all');
+  
+  const categories = ['all', ...new Set(galleryData.map(item => item.category))];
+  
+  const filteredImages = filterCategory === 'all' 
+    ? galleryData 
+    : galleryData.filter(img => img.category === filterCategory);
+
+  // Use filteredImages for display
+  const displayImages = filteredImages;
 
   const openLightbox = (index: number) => {
     setSelectedImage(index);
@@ -29,21 +133,21 @@ const Gallery = () => {
     if (selectedImage === null) return;
     
     if (direction === 'next') {
-      setSelectedImage((selectedImage + 1) % galleryImages.length);
+      setSelectedImage((selectedImage + 1) % displayImages.length);
     } else {
-      setSelectedImage((selectedImage - 1 + galleryImages.length) % galleryImages.length);
+      setSelectedImage((selectedImage - 1 + displayImages.length) % displayImages.length);
     }
   };
 
   const handleDownload = async () => {
     if (selectedImage === null) return;
     try {
-      const response = await fetch(galleryImages[selectedImage].src);
+      const response = await fetch(displayImages[selectedImage].src);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `wedding-photo-${selectedImage + 1}.jpg`;
+      link.download = `wedding-photo-${displayImages[selectedImage].id}.jpg`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -118,6 +222,23 @@ const Gallery = () => {
             A glimpse into our journey of love, laughter, and happily ever after
           </p>
 
+          {/* Category Filter - Optional: Uncomment to enable filtering */}
+          {/* <div className="flex flex-wrap justify-center gap-3 mt-8">
+            {categories.map(category => (
+              <button
+                key={category}
+                onClick={() => setFilterCategory(category)}
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  filterCategory === category
+                    ? 'bg-amber-500 text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-amber-100'
+                }`}
+              >
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </button>
+            ))}
+          </div> */}
+
           {/* Decorative hearts */}
           <div className="flex justify-center gap-2 mt-4">
             <FaHeart className="text-amber-300 text-sm" />
@@ -130,9 +251,9 @@ const Gallery = () => {
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {galleryImages.map((image, index) => (
+          {displayImages.map((image, index) => (
             <div
-              key={index}
+              key={image.id}
               className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer"
               onClick={() => openLightbox(index)}
             >
@@ -140,7 +261,7 @@ const Gallery = () => {
               <div className="relative aspect-w-4 aspect-h-5">
                 <img
                   src={image.src}
-                  alt={`${image.alt} ${index + 1}`}
+                  alt={image.alt}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 
@@ -150,13 +271,20 @@ const Gallery = () => {
                 {/* Decorative Frame */}
                 <div className="absolute inset-0 border-2 border-transparent group-hover:border-amber-400/50 rounded-2xl transition-all duration-500 m-[2px]" />
                 
-                {/* Photo Number Badge */}
+                {/* Photo Badge with Category */}
                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-amber-700 font-medium border border-amber-200 transform -translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
                   <span className="flex items-center gap-1">
                     <FaHeart className="text-xs" />
-                    Photo {index + 1}
+                    {image.category}
                   </span>
                 </div>
+                
+                {/* Location Badge */}
+                {image.location && (
+                  <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    📍 {image.location}
+                  </div>
+                )}
                 
                 {/* Zoom Icon on Hover */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -165,10 +293,15 @@ const Gallery = () => {
                   </div>
                 </div>
                 
-                {/* Image Title */}
+                {/* Image Info */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                   <p className="text-white font-serif text-lg">{image.title}</p>
-                  <p className="text-amber-200 text-sm">Memory {index + 1}</p>
+                  <div className="flex items-center justify-between mt-1">
+                    <p className="text-amber-200 text-sm">{image.date}</p>
+                    {image.featured && (
+                      <FaHeart className="text-amber-400 text-xs" />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -229,25 +362,28 @@ const Gallery = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={galleryImages[selectedImage].src}
-              alt={`${galleryImages[selectedImage].alt} ${selectedImage + 1}`}
+              src={displayImages[selectedImage].src}
+              alt={displayImages[selectedImage].alt}
               className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
             />
             
             {/* Image Info */}
             <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg">
               <p className="text-white font-serif text-xl">
-                {galleryImages[selectedImage].title} - {selectedImage + 1} of {galleryImages.length}
+                {displayImages[selectedImage].title}
               </p>
-              <div className="flex items-center gap-2 mt-2">
-                <FaHeart className="text-amber-400" />
-                <span className="text-amber-200">A beautiful moment captured</span>
+              <div className="flex items-center gap-4 mt-2 text-amber-200">
+                <span>{displayImages[selectedImage].location}</span>
+                <span>•</span>
+                <span>{displayImages[selectedImage].date}</span>
+                <span>•</span>
+                <span>{selectedImage + 1} of {displayImages.length}</span>
               </div>
             </div>
 
             {/* Photo Counter Dots */}
             <div className="absolute top-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-              {galleryImages.map((_, index) => (
+              {displayImages.map((_, index) => (
                 <button
                   key={index}
                   onClick={(e) => { e.stopPropagation(); setSelectedImage(index); }}
@@ -262,31 +398,6 @@ const Gallery = () => {
           </div>
         </div>
       )}
-
-      {/* Custom Animations */}
-      {/* <style jsx>{`
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
-        @keyframes float-slow {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 8s linear infinite;
-        }
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-        .animate-float-slow {
-          animation: float-slow 8s ease-in-out infinite;
-        }
-      `}</style> */}
     </section>
   );
 };

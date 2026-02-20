@@ -17,7 +17,7 @@ const Hero = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ 
-            backgroundImage: 'url("/couples.jpg")',
+            backgroundImage: 'url("/couples1.jpeg")',
           }}
         />
         {/* Elegant gradient overlay */}
