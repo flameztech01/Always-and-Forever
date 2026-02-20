@@ -1,6 +1,6 @@
-
-import { FaCalendarAlt, FaMapMarkerAlt, FaHeart, FaRing } from 'react-icons/fa';
+import { FaCalendarAlt, FaMapMarkerAlt, FaRing } from 'react-icons/fa';
 import { BsArrowDownCircle } from 'react-icons/bs';
+import { GiFlowerEmblem } from 'react-icons/gi';
 
 const Hero = () => {
   const scrollToNextSection = () => {
@@ -11,8 +11,8 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image with Royal Gradient Overlay */}
       <div className="absolute inset-0 w-full h-full">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -20,85 +20,81 @@ const Hero = () => {
             backgroundImage: 'url("/couples.jpg")',
           }}
         />
-        {/* Gold gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-amber-500/20 to-white/40" />
-        {/* Decorative gold pattern overlay */}
+        {/* Elegant gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-amber-900/40 to-black/40" />
+        
+        {/* Subtle gold pattern overlay */}
         <div className="absolute inset-0 opacity-10" 
           style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, gold 1px, transparent 1px)`,
-            backgroundSize: '40px 40px'
+            backgroundImage: `radial-gradient(circle at 1px 1px, gold 1px, transparent 1px)`,
+            backgroundSize: '50px 50px'
           }}
         />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-20 text-center">
-        {/* Floating hearts decoration */}
-        <div className="absolute top-20 left-10 animate-bounce hidden lg:block">
-          <FaHeart className="text-amber-300/40 text-4xl" />
-        </div>
-        <div className="absolute bottom-20 right-10 animate-pulse hidden lg:block">
-          <FaHeart className="text-amber-300/40 text-5xl" />
-        </div>
-        <div className="absolute top-40 right-20 animate-spin-slow hidden lg:block">
-          <FaRing className="text-amber-300/30 text-3xl" />
-        </div>
+      {/* Decorative floating elements - subtle */}
+      <div className="absolute top-20 left-10 animate-float-slow hidden lg:block opacity-30">
+        <FaRing className="text-amber-300 text-4xl" />
+      </div>
+      <div className="absolute bottom-20 right-10 animate-float-delayed hidden lg:block opacity-30">
+        <GiFlowerEmblem className="text-amber-300 text-5xl" />
+      </div>
 
-        {/* Main Content Card */}
-        <div className="max-w-4xl mx-auto bg-white/30 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border border-white/50">
+      {/* Main Content - Centered vertically */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Content Card */}
+        <div className="max-w-4xl mx-auto">
           {/* Decorative top line */}
-          <div className="w-24 h-1 bg-gradient-to-r from-amber-300 to-amber-600 mx-auto mb-6 rounded-full" />
+          <div className="flex justify-center items-center gap-4 mb-6">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
+            <div className="w-2 h-2 rounded-full bg-amber-400/60"></div>
+            <div className="w-12 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
+          </div>
           
           {/* Subtitle */}
-          <p className="text-amber-800 font-light tracking-[0.3em] text-sm md:text-base mb-4">
-            CELEBRATING LOVE
+          <p className="text-amber-200/90 font-light tracking-[0.3em] text-sm md:text-base mb-4 text-center uppercase">
+            The Wedding Celebration
           </p>
 
           {/* Main Title */}
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-gray-800 mb-6 leading-tight">
-            We're Getting 
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-400">
-              Married
-            </span>
+          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-white mb-4 text-center leading-tight drop-shadow-2xl">
+            Amarachi 
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500 mx-2">&</span> 
+            Joekenry
           </h1>
 
-          {/* Couple Names with decorative elements */}
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-amber-400" />
-            <div className="flex items-center gap-3">
-              <span className="font-serif text-xl md:text-2xl text-gray-800">Pastor Oluwatosin Adetutu</span>
-              <FaHeart className="text-amber-500 text-xl" />
-              <span className="font-serif text-xl md:text-2xl text-gray-800">Pastor Favour NewMan</span>
-            </div>
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-amber-400" />
-          </div>
+          {/* Subhead */}
+          <p className="text-amber-100/90 text-lg md:text-xl mb-8 text-center font-light italic">
+            Are delighted to announce their union
+          </p>
 
-          {/* Date and Location Card */}
-          <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-amber-200">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+          {/* Date and Location Card - Professional Layout */}
+          <div className="bg-black/30 backdrop-blur-md rounded-xl p-6 mb-8 border border-amber-500/20 shadow-2xl">
+            {/* Mobile: Left-aligned, Desktop: Centered */}
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-6 md:gap-12">
               {/* Date */}
-              <div className="flex items-center gap-3">
-                <div className="bg-amber-400/20 p-3 rounded-full">
-                  <FaCalendarAlt className="text-amber-600 text-xl" />
+              <div className="flex items-center gap-4 w-full md:w-auto">
+                <div className="bg-gradient-to-br from-amber-500/20 to-amber-600/20 p-3 rounded-lg">
+                  <FaCalendarAlt className="text-amber-400 text-xl" />
                 </div>
-                <div>
-                  <p className="text-sm text-amber-700 font-light">DATE</p>
-                  <p className="font-serif text-lg md:text-xl text-gray-800 font-medium">January 17, 2026</p>
+                <div className="text-left">
+                  <p className="text-xs text-amber-300/80 font-light mb-1">DATE</p>
+                  <p className="font-serif text-lg md:text-xl text-white">17 January 2026</p>
                 </div>
               </div>
 
-              {/* Decorative divider */}
-              <div className="hidden md:block w-px h-12 bg-gradient-to-b from-transparent via-amber-400 to-transparent" />
+              {/* Decorative divider - hidden on mobile */}
+              <div className="hidden md:block w-px h-12 bg-gradient-to-b from-transparent via-amber-500/50 to-transparent" />
 
               {/* Location */}
-              <div className="flex items-center gap-3">
-                <div className="bg-amber-400/20 p-3 rounded-full">
-                  <FaMapMarkerAlt className="text-amber-600 text-xl" />
+              <div className="flex items-center gap-4 w-full md:w-auto">
+                <div className="bg-gradient-to-br from-amber-500/20 to-amber-600/20 p-3 rounded-lg">
+                  <FaMapMarkerAlt className="text-amber-400 text-xl" />
                 </div>
-                <div>
-                  <p className="text-sm text-amber-700 font-light">LOCATION</p>
-                  <p className="font-serif text-lg md:text-xl text-gray-800 font-medium">Christ Embassy Cornerstone Church</p>
-                  <p className="text-sm text-gray-600">LCA Car Park, Oregun, Ikeja, Lagos</p>
+                <div className="text-left">
+                  <p className="text-xs text-amber-300/80 font-light mb-1">VENUE</p>
+                  <p className="font-serif text-lg md:text-xl text-white">Christ Embassy Cornerstone</p>
+                  <p className="text-xs text-amber-200/70">LCA Car Park, Oregun, Ikeja, Lagos</p>
                 </div>
               </div>
             </div>
@@ -108,18 +104,14 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button 
               onClick={() => document.getElementById('rsvp')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-full font-medium overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              className="px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-lg font-medium hover:from-amber-600 hover:to-amber-700 transition-all duration-300 shadow-lg hover:shadow-amber-500/25 w-full sm:w-auto"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                RSVP Now
-                <FaHeart className="group-hover:scale-110 transition-transform" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              RSVP Now
             </button>
             
             <button 
               onClick={() => document.getElementById('details')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 bg-white/80 text-amber-700 rounded-full font-medium border-2 border-amber-400 hover:bg-white hover:border-amber-500 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
+              className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-medium border border-amber-400/30 hover:bg-white/20 hover:border-amber-400/50 transition-all duration-300 w-full sm:w-auto"
             >
               View Details
             </button>
@@ -130,26 +122,28 @@ const Hero = () => {
       {/* Scroll Indicator */}
       <button 
         onClick={scrollToNextSection}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce cursor-pointer group"
+        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 animate-bounce cursor-pointer group"
         aria-label="Scroll down"
       >
-        <div className="bg-white/30 backdrop-blur-sm p-2 rounded-full border border-amber-400/50 group-hover:border-amber-500 transition-all">
-          <BsArrowDownCircle className="text-3xl text-amber-600 group-hover:text-amber-700 transition-colors" />
+        <div className="bg-black/20 backdrop-blur-sm p-2 rounded-full border border-amber-500/30 group-hover:border-amber-500/50 transition-all">
+          <BsArrowDownCircle className="text-2xl text-amber-400/80 group-hover:text-amber-300 transition-colors" />
         </div>
       </button>
 
-      {/* Add custom animation for spin-slow */}
       {/* <style jsx>{`
-        @keyframes spin-slow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
+        @keyframes float-slow {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-15px); }
         }
-        .animate-spin-slow {
-          animation: spin-slow 8s linear infinite;
+        @keyframes float-delayed {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        .animate-float-slow {
+          animation: float-slow 6s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+          animation: float-delayed 7s ease-in-out infinite;
         }
       `}</style> */}
     </section>
