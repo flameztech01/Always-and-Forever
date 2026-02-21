@@ -121,7 +121,7 @@ const Footer = () => {
                 </div>
                 <div className="text-left">
                   <p className="text-xs text-amber-300">Traditional Wedding</p>
-                  <p className="text-sm text-white">March 19, 2026 • 4:00 PM</p>
+                  <p className="text-sm text-white">March 18, 2026 • 12:00 PM</p>
                 </div>
               </li>
               <li className="flex items-center justify-center md:justify-start gap-2">
@@ -130,7 +130,7 @@ const Footer = () => {
                 </div>
                 <div className="text-left">
                   <p className="text-xs text-amber-300">Church Wedding</p>
-                  <p className="text-sm text-white">March 21, 2026 • 11:00 AM</p>
+                  <p className="text-sm text-white">March 21, 2026 • 10:00 AM</p>
                 </div>
               </li>
             </ul>
