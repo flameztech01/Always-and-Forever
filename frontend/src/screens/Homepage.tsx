@@ -5,6 +5,7 @@ import Gallery from "../components/Gallery"
 import Details from "../components/Details"
 import Venue from '../components/Venue'
 import Gift from '../components/Gift'
+import Footer from '../components/Footer'
 
 const Homepage = () => {
   return (
@@ -20,6 +21,7 @@ const Homepage = () => {
       <section id='gift-registry'>
         <Gift />
       </section>
+      <Footer />
     </div>
   )
 }

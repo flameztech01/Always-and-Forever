@@ -6,12 +6,12 @@ import {
   FaPhone, 
   FaRegEnvelope,
   FaStar,
-  FaRegHeart
+  FaRegHeart,
+  FaMapMarkerAlt
 } from 'react-icons/fa';
 import { 
   MdAttractions, 
   MdChurch, 
-  MdRestaurant, 
   MdCelebration 
 } from 'react-icons/md';
 import { GiFlowerTwirl } from 'react-icons/gi';
@@ -22,28 +22,31 @@ const Details = () => {
       id: 1,
       title: "Traditional Wedding",
       icon: <MdAttractions className="text-4xl" />,
-      time: "11:00 AM",
-      date: "Thursday, January 15th, 2026",
-      description: "Strictly by Invitation (venue will be communicated to invited guests).",
-      color: "from-amber-400 to-amber-500",
+      time: "4:00 PM",
+      date: "Thursday, March 19th, 2026",
+      venue: "House 3, Road E",
+      address: [
+        "All Saints Community, Phase 1, Ogombo",
+        "Eti-Osa, Lagos"
+      ],
+      description: "Join us as we celebrate our traditional wedding ceremony with family and friends.",
+      color: "from-amber-600 to-amber-700",
+      dressCode: "Traditional attire"
     },
     {
       id: 2,
-      title: "Church Wedding",
+      title: "White Wedding",
       icon: <MdChurch className="text-4xl" />,
       time: "11:00 AM",
-      date: "Saturday, January 17th, 2026",
+      date: "Saturday, March 21st, 2026",
+      venue: "Christ Embassy Isheri",
+      address: [
+        "No 8 Channels TV Road, Opic Estate",
+        "Isheri, Lagos"
+      ],
       description: "Join us as we exchange our vows before God, family, and friends.",
-      color: "from-amber-500 to-amber-600",
-    },
-    {
-      id: 3,
-      title: "Reception",
-      icon: <MdRestaurant className="text-4xl" />,
-      time: "Follows Immediately",
-      date: "After Wedding",
-      description: "Strictly by Invitation (venue will be communicated to invited guests).",
-      color: "from-amber-600 to-amber-700",
+      color: "from-amber-400 to-amber-500",
+      dressCode: "Formal/Church attire"
     }
   ];
 
@@ -102,7 +105,7 @@ const Details = () => {
 
           {/* Description */}
           <p className="text-gray-600 max-w-2xl mx-auto mt-4">
-            Join us in celebrating our love story. Here's everything you need to know about our special day.
+            Join us in celebrating our love story. Here's everything you need to know about our special days.
           </p>
 
           {/* Decorative hearts */}
@@ -115,8 +118,8 @@ const Details = () => {
           </div>
         </div>
 
-        {/* Events Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+        {/* Events Grid - 2 columns for the 2 events */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
           {events.map((event) => (
             <div
               key={event.id}
@@ -126,7 +129,7 @@ const Details = () => {
               <div className={`absolute inset-0 bg-gradient-to-r ${event.color} opacity-20 rounded-3xl blur-xl group-hover:opacity-30 transition-opacity duration-500`} />
               
               {/* Main Card */}
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-amber-100 hover:border-amber-300 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl">
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-amber-100 hover:border-amber-300 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl h-full flex flex-col">
                 
                 {/* Decorative corner elements */}
                 <div className="absolute top-4 left-4 text-amber-300/40">
@@ -178,20 +181,32 @@ const Details = () => {
                       <p className="text-sm md:text-base text-gray-700 font-medium">{event.date}</p>
                     </div>
                   </div>
+
+                  {/* Venue */}
+                  <div className="flex items-start gap-3">
+                    <div className="bg-amber-200/50 p-2 rounded-lg mt-1">
+                      <FaMapMarkerAlt className="text-amber-600 text-sm" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-amber-700 font-light">VENUE</p>
+                      <p className="text-sm md:text-base text-gray-700 font-medium">{event.venue}</p>
+                      {event.address.map((line, index) => (
+                        <p key={index} className="text-xs text-gray-600">{line}</p>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">
                   {event.description}
                 </p>
 
-                {/* Dress Code or Additional Info (optional) */}
-                {event.id === 2 && (
-                  <div className="flex items-center gap-2 text-xs text-amber-600 bg-amber-50 p-2 rounded-lg">
-                    <FaRing className="text-amber-500" />
-                    <span>Traditional wedding attire</span>
-                  </div>
-                )}
+                {/* Dress Code */}
+                <div className="flex items-center gap-2 text-xs text-amber-600 bg-amber-50 p-2 rounded-lg mt-auto">
+                  <FaRing className="text-amber-500" />
+                  <span>{event.dressCode}</span>
+                </div>
 
                 {/* Decorative bottom border */}
                 <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-12 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
@@ -200,7 +215,7 @@ const Details = () => {
           ))}
         </div>
 
-        {/* Additional Information Card */}
+        {/* Contact Information Card */}
         <div className="max-w-3xl mx-auto mt-16">
           <div className="relative bg-gradient-to-r from-amber-100/50 to-amber-200/50 backdrop-blur-sm rounded-3xl p-8 border border-amber-300 shadow-xl">
             {/* Decorative elements */}
@@ -212,7 +227,7 @@ const Details = () => {
             </div>
 
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              {/* Contact for Invitation */}
+              {/* Invitation Inquiries */}
               <div className="flex items-center gap-4">
                 <div className="bg-white p-4 rounded-full shadow-md">
                   <FaRegEnvelope className="text-2xl text-amber-600" />
@@ -226,7 +241,7 @@ const Details = () => {
               {/* Decorative divider */}
               <div className="hidden md:block w-px h-12 bg-gradient-to-b from-transparent via-amber-400 to-transparent" />
 
-              {/* Contact for Questions */}
+              {/* Questions */}
               <div className="flex items-center gap-4">
                 <div className="bg-white p-4 rounded-full shadow-md">
                   <FaPhone className="text-2xl text-amber-600" />
@@ -240,13 +255,12 @@ const Details = () => {
 
             {/* Note */}
             <div className="mt-6 text-center text-sm text-gray-600 bg-white/60 p-3 rounded-xl">
-              <span className="font-medium text-amber-700">Note:</span> All events are strictly by invitation. 
-              Venue details will be sent to invited guests.
+              <span className="font-medium text-amber-700">Note:</span> All events are strictly by invitation.
             </div>
           </div>
         </div>
 
-        {/* Save the Date Card */}
+        {/* Save the Date Button */}
         <div className="text-center mt-12">
           <button className="group inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <FaCalendarAlt className="group-hover:scale-110 transition-transform" />

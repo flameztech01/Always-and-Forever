@@ -30,11 +30,10 @@ const Gift = () => {
   };
 
   const bankDetails = {
-    espees: "@PERFECT2026",
-    accountNumber: "2096105832",
-    accountName: "Ajunnu Favour",
-    bankName: "UBA",
-    bankCode: "033"
+    espees: "joekenryod74065",
+    accountNumber: "0129880836",
+    accountName: "Chukwuemeka Amarachi R.",
+    bankName: "GTBank",
   };
 
   return (
@@ -192,7 +191,7 @@ const Gift = () => {
                   <FaUniversity className="text-white text-3xl -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
                 </div>
 
-                <h3 className="font-serif text-xl text-center text-gray-800 mb-4">Bank Account</h3>
+                <h3 className="font-serif text-xl text-center text-gray-800 mb-4">Bank Transfer</h3>
                 
                 <div className="space-y-3 mb-4">
                   <div className="bg-amber-50 rounded-xl p-3 border border-amber-200">
@@ -213,15 +212,14 @@ const Gift = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="bg-amber-50 rounded-xl p-3 border border-amber-200">
-                      <p className="text-xs text-amber-700 font-light mb-1">BANK</p>
-                      <p className="font-medium text-gray-800">{bankDetails.bankName}</p>
-                    </div>
-                    <div className="bg-amber-50 rounded-xl p-3 border border-amber-200">
-                      <p className="text-xs text-amber-700 font-light mb-1">ACCOUNT NAME</p>
-                      <p className="font-medium text-gray-800 text-sm">{bankDetails.accountName}</p>
-                    </div>
+                  <div className="bg-amber-50 rounded-xl p-3 border border-amber-200">
+                    <p className="text-xs text-amber-700 font-light mb-1">ACCOUNT NAME</p>
+                    <p className="font-medium text-gray-800">{bankDetails.accountName}</p>
+                  </div>
+
+                  <div className="bg-amber-50 rounded-xl p-3 border border-amber-200">
+                    <p className="text-xs text-amber-700 font-light mb-1">BANK</p>
+                    <p className="font-medium text-gray-800">{bankDetails.bankName}</p>
                   </div>
                 </div>
 

@@ -51,9 +51,9 @@ const Hero = () => {
             <div className="w-12 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
           </div>
           
-          {/* Subtitle */}
+          {/* Subtitle - Changed from "celebration" to "ceremony" as requested */}
           <p className="text-amber-200/90 font-light tracking-[0.3em] text-sm md:text-base mb-4 text-center uppercase">
-            The Wedding Celebration
+            The Wedding Ceremony
           </p>
 
           {/* Main Title */}
@@ -68,33 +68,58 @@ const Hero = () => {
             Are delighted to announce their union
           </p>
 
-          {/* Date and Location Card - Professional Layout */}
+          {/* Date and Location Card - Now showing both traditional and white wedding */}
           <div className="bg-black/30 backdrop-blur-md rounded-xl p-6 mb-8 border border-amber-500/20 shadow-2xl">
-            {/* Mobile: Left-aligned, Desktop: Centered */}
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-6 md:gap-12">
-              {/* Date */}
+            {/* Traditional Wedding */}
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-6 md:gap-12 mb-6 pb-6 border-b border-amber-500/20">
+              {/* Traditional Date */}
               <div className="flex items-center gap-4 w-full md:w-auto">
                 <div className="bg-gradient-to-br from-amber-500/20 to-amber-600/20 p-3 rounded-lg">
                   <FaCalendarAlt className="text-amber-400 text-xl" />
                 </div>
                 <div className="text-left">
-                  <p className="text-xs text-amber-300/80 font-light mb-1">DATE</p>
-                  <p className="font-serif text-lg md:text-xl text-white">17 January 2026</p>
+                  <p className="text-xs text-amber-300/80 font-light mb-1">TRADITIONAL • MARCH 19, 2026</p>
+                  <p className="font-serif text-lg md:text-xl text-white">4:00 PM</p>
                 </div>
               </div>
 
-              {/* Decorative divider - hidden on mobile */}
-              <div className="hidden md:block w-px h-12 bg-gradient-to-b from-transparent via-amber-500/50 to-transparent" />
-
-              {/* Location */}
+              {/* Traditional Venue */}
               <div className="flex items-center gap-4 w-full md:w-auto">
                 <div className="bg-gradient-to-br from-amber-500/20 to-amber-600/20 p-3 rounded-lg">
                   <FaMapMarkerAlt className="text-amber-400 text-xl" />
                 </div>
                 <div className="text-left">
                   <p className="text-xs text-amber-300/80 font-light mb-1">VENUE</p>
-                  <p className="font-serif text-lg md:text-xl text-white">Christ Embassy Cornerstone</p>
-                  <p className="text-xs text-amber-200/70">LCA Car Park, Oregun, Ikeja, Lagos</p>
+                  <p className="font-serif text-base md:text-lg text-white">House 3, Road E</p>
+                  <p className="text-xs text-amber-200/70">All Saints Community, Phase 1, Ogombo</p>
+                  <p className="text-xs text-amber-200/70">Eti-Osa, Lagos</p>
+                </div>
+              </div>
+            </div>
+
+            {/* White Wedding */}
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-6 md:gap-12">
+              {/* White Wedding Date */}
+              <div className="flex items-center gap-4 w-full md:w-auto">
+                <div className="bg-gradient-to-br from-amber-500/20 to-amber-600/20 p-3 rounded-lg">
+                  <FaCalendarAlt className="text-amber-400 text-xl" />
+                </div>
+                <div className="text-left">
+                  <p className="text-xs text-amber-300/80 font-light mb-1">WHITE WEDDING • MARCH 21, 2026</p>
+                  <p className="font-serif text-lg md:text-xl text-white">Time TBA</p>
+                </div>
+              </div>
+
+              {/* White Wedding Venue */}
+              <div className="flex items-center gap-4 w-full md:w-auto">
+                <div className="bg-gradient-to-br from-amber-500/20 to-amber-600/20 p-3 rounded-lg">
+                  <FaMapMarkerAlt className="text-amber-400 text-xl" />
+                </div>
+                <div className="text-left">
+                  <p className="text-xs text-amber-300/80 font-light mb-1">VENUE</p>
+                  <p className="font-serif text-base md:text-lg text-white">Christ Embassy Isheri</p>
+                  <p className="text-xs text-amber-200/70">No 8 Channels TV Road, Opic Estate</p>
+                  <p className="text-xs text-amber-200/70">Isheri, Lagos</p>
                 </div>
               </div>
             </div>

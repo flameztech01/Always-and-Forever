@@ -1,34 +1,58 @@
 import { useState, useEffect } from 'react';
-import { FaClock, FaHeart, FaRing, FaGlassCheers, FaStar } from 'react-icons/fa';
+import { FaClock, FaHeart, FaRing, FaGlassCheers, FaStar, FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import { MdWaves } from 'react-icons/md';
+import { GiChampagneCork } from 'react-icons/gi';
 
 const CountDown = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 2,
+  // Traditional wedding: March 19, 2026 at 4:00 PM
+  const [traditionalTimeLeft, setTraditionalTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  // White wedding: March 21, 2026 (assuming 12:00 PM - adjust if different)
+  const [whiteWeddingTimeLeft, setWhiteWeddingTimeLeft] = useState({
+    days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0
   });
 
   useEffect(() => {
-    // Set wedding date to 2 days from now at 12:00 PM
-    const weddingDate = new Date();
-    weddingDate.setDate(weddingDate.getDate() + 2);
-    weddingDate.setHours(12, 0, 0, 0);
+    // Set traditional wedding date: March 19, 2026 at 4:00 PM
+    const traditionalDate = new Date(2026, 2, 19, 16, 0, 0); // Month is 0-indexed, so 2 = March
+
+    // Set white wedding date: March 21, 2026 at 12:00 PM (adjust time as needed)
+    const whiteWeddingDate = new Date(2026, 2, 21, 12, 0, 0);
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
-      const distance = weddingDate.getTime() - now;
-
-      if (distance < 0) {
-        clearInterval(timer);
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      
+      // Calculate for traditional wedding
+      const traditionalDistance = traditionalDate.getTime() - now;
+      if (traditionalDistance < 0) {
+        setTraditionalTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       } else {
-        setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000)
+        setTraditionalTimeLeft({
+          days: Math.floor(traditionalDistance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((traditionalDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((traditionalDistance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((traditionalDistance % (1000 * 60)) / 1000)
+        });
+      }
+
+      // Calculate for white wedding
+      const whiteWeddingDistance = whiteWeddingDate.getTime() - now;
+      if (whiteWeddingDistance < 0) {
+        setWhiteWeddingTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      } else {
+        setWhiteWeddingTimeLeft({
+          days: Math.floor(whiteWeddingDistance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((whiteWeddingDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((whiteWeddingDistance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((whiteWeddingDistance % (1000 * 60)) / 1000)
         });
       }
     }, 1000);
@@ -40,13 +64,18 @@ const CountDown = () => {
     return num < 10 ? `0${num}` : num.toString();
   };
 
-  const TimeBlock = ({ value, label, icon }: { value: number; label: string; icon: React.ReactNode }) => (
+  const TimeBlock = ({ value, label, icon, bgColor = "from-amber-300/20 to-amber-500/20" }: { 
+    value: number; 
+    label: string; 
+    icon: React.ReactNode;
+    bgColor?: string;
+  }) => (
     <div className="group relative">
       {/* Glowing effect behind */}
-      <div className="absolute inset-0 bg-gradient-to-r from-amber-300/20 to-amber-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+      <div className={`absolute inset-0 bg-gradient-to-r ${bgColor} rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500`} />
       
       {/* Main block */}
-      <div className="relative bg-white/80 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-xl border border-amber-200 hover:border-amber-400 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl">
+      <div className="relative bg-white/80 backdrop-blur-md rounded-2xl p-4 md:p-6 shadow-xl border border-amber-200 hover:border-amber-400 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl">
         {/* Decorative corners */}
         <div className="absolute top-2 left-2 text-amber-300/30">
           <FaStar className="text-xs" />
@@ -62,18 +91,101 @@ const CountDown = () => {
         </div>
 
         {/* Icon */}
-        <div className="text-amber-500 text-3xl mb-3 flex justify-center">
+        <div className="text-amber-500 text-2xl md:text-3xl mb-2 flex justify-center">
           {icon}
         </div>
 
         {/* Value */}
-        <div className="font-serif text-4xl md:text-5xl lg:text-6xl text-gray-800 font-bold mb-1">
+        <div className="font-serif text-3xl md:text-4xl lg:text-5xl text-gray-800 font-bold mb-1">
           {formatNumber(value)}
         </div>
 
         {/* Label */}
-        <div className="text-sm md:text-base text-amber-700 font-light tracking-wider">
+        <div className="text-xs md:text-sm text-amber-700 font-light tracking-wider">
           {label}
+        </div>
+      </div>
+    </div>
+  );
+
+  const EventCard = ({ 
+    title, 
+    date, 
+    time, 
+    venue, 
+    address,
+    icon,
+    timeLeft,
+    bgGradient = "from-amber-500 to-amber-600"
+  }: { 
+    title: string;
+    date: string;
+    time: string;
+    venue: string;
+    address: string[];
+    icon: React.ReactNode;
+    timeLeft: { days: number; hours: number; minutes: number; seconds: number };
+    bgGradient?: string;
+  }) => (
+    <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-amber-200/50 hover:border-amber-400 transition-all duration-500">
+      {/* Event Header */}
+      <div className={`bg-gradient-to-r ${bgGradient} p-6 text-white`}>
+        <div className="flex items-center gap-3 mb-2">
+          <div className="text-2xl">{icon}</div>
+          <h3 className="font-serif text-2xl md:text-3xl">{title}</h3>
+        </div>
+        <div className="flex items-center gap-4 text-amber-100">
+          <div className="flex items-center gap-2">
+            <FaCalendarAlt className="text-sm" />
+            <span className="text-sm">{date}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <FaClock className="text-sm" />
+            <span className="text-sm">{time}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Countdown Timer */}
+      <div className="p-6">
+        <div className="grid grid-cols-4 gap-2 md:gap-3 mb-6">
+          <TimeBlock 
+            value={timeLeft.days} 
+            label="DAYS" 
+            icon={<FaClock />}
+            bgColor="from-amber-300/20 to-amber-500/20"
+          />
+          <TimeBlock 
+            value={timeLeft.hours} 
+            label="HRS" 
+            icon={<FaClock />}
+            bgColor="from-amber-300/20 to-amber-500/20"
+          />
+          <TimeBlock 
+            value={timeLeft.minutes} 
+            label="MINS" 
+            icon={<FaClock />}
+            bgColor="from-amber-300/20 to-amber-500/20"
+          />
+          <TimeBlock 
+            value={timeLeft.seconds} 
+            label="SECS" 
+            icon={<FaClock />}
+            bgColor="from-amber-300/20 to-amber-500/20"
+          />
+        </div>
+
+        {/* Venue Details */}
+        <div className="border-t border-amber-100 pt-4">
+          <div className="flex items-start gap-3">
+            <FaMapMarkerAlt className="text-amber-500 text-xl mt-1 flex-shrink-0" />
+            <div>
+              <p className="font-medium text-gray-800">{venue}</p>
+              {address.map((line, index) => (
+                <p key={index} className="text-sm text-gray-600">{line}</p>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -125,7 +237,7 @@ const CountDown = () => {
             Counting Down to
           </h2>
           <p className="font-serif text-xl md:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-400">
-            Our Special Day
+            Our Wedding Celebrations
           </p>
 
           {/* Decorative heart line */}
@@ -138,38 +250,65 @@ const CountDown = () => {
           </div>
         </div>
 
-        {/* Countdown Timer */}
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            <TimeBlock 
-              value={timeLeft.days} 
-              label="DAYS" 
-              icon={<FaClock />} 
+        {/* Two Column Countdown Layout */}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+            {/* Traditional Wedding */}
+            <EventCard
+              title="Traditional Wedding"
+              date="March 19, 2026"
+              time="4:00 PM"
+              venue="House 3, Road E"
+              address={[
+                "All Saints Community, Phase 1, Ogombo",
+                "Eti-Osa, Lagos"
+              ]}
+              icon={<FaRing />}
+              timeLeft={traditionalTimeLeft}
+              bgGradient="from-amber-600 to-amber-700"
             />
-            <TimeBlock 
-              value={timeLeft.hours} 
-              label="HOURS" 
-              icon={<FaClock />} 
-            />
-            <TimeBlock 
-              value={timeLeft.minutes} 
-              label="MINUTES" 
-              icon={<FaClock />} 
-            />
-            <TimeBlock 
-              value={timeLeft.seconds} 
-              label="SECONDS" 
-              icon={<FaClock />} 
+
+            {/* White Wedding */}
+            <EventCard
+              title="White Wedding"
+              date="March 21, 2026"
+              time="11:00 AM" // Assuming 11:00 AM - please adjust if different
+              venue="Christ Embassy Isheri"
+              address={[
+                "No 8 Channels TV Road, Opic Estate",
+                "Isheri, Lagos"
+              ]}
+              icon={<GiChampagneCork />}
+              timeLeft={whiteWeddingTimeLeft}
+              bgGradient="from-amber-500 to-amber-600"
             />
           </div>
 
-          {/* Message under countdown */}
+          {/* Financial Information Card */}
           <div className="mt-12 text-center">
+            <div className="inline-flex items-center gap-3 bg-white/90 backdrop-blur-sm rounded-2xl px-8 py-4 border border-amber-200 shadow-lg">
+              <div className="text-amber-600 text-2xl font-bold">₦</div>
+              <div className="text-left">
+                <p className="text-sm text-amber-700 font-medium">Bank Transfer</p>
+                <p className="text-gray-800 font-serif">
+                  <span className="font-bold">0129880836</span> • GTBank
+                </p>
+                <p className="text-xs text-gray-600">Chukwuemeka Amarachi R.</p>
+              </div>
+              <div className="border-l border-amber-200 pl-3">
+                <p className="text-xs text-amber-600">Espees Username</p>
+                <p className="text-sm font-mono text-gray-700">joekenryod74065</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Message under countdown */}
+          <div className="mt-8 text-center">
             <div className="inline-flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-full px-6 py-3 border border-amber-200 shadow-lg">
               <FaGlassCheers className="text-amber-500 text-xl" />
               <p className="text-gray-700">
-                <span className="font-medium">Can't wait to celebrate with you!</span>{' '}
-                <span className="text-amber-600">{timeLeft.days} days to go</span>
+                <span className="font-medium">We can't wait to celebrate with you!</span>{' '}
+                <span className="text-amber-600">{traditionalTimeLeft.days} days until traditional, {whiteWeddingTimeLeft.days} days until white wedding</span>
               </p>
               <div className="relative">
                 <FaHeart className="text-amber-400 animate-pulse" />
