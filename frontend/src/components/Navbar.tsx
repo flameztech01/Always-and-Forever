@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FaHeart, FaHome, FaImages, FaCalendarAlt, FaCheckCircle, FaGift, FaRing } from 'react-icons/fa';
+import { FaHeart, FaHome, FaImages, FaCalendarAlt, FaCheckCircle, FaGift, FaRing, FaMapMarkerAlt } from 'react-icons/fa';
 import { HiMenu, HiX } from 'react-icons/hi';
 
 const Navbar = () => {
@@ -33,6 +33,7 @@ const Navbar = () => {
     { name: 'Home', icon: <FaHome className="mr-2" />, id: 'home' },
     { name: 'Gallery', icon: <FaImages className="mr-2" />, id: 'gallery' },
     { name: 'Details', icon: <FaCalendarAlt className="mr-2" />, id: 'details' },
+    { name: 'Venue', icon: <FaMapMarkerAlt className="mr-2" />, id: 'venue' },
     { name: 'RSVP', icon: <FaCheckCircle className="mr-2" />, id: 'rsvp' },
     { name: 'Gift Registry', icon: <FaGift className="mr-2" />, id: 'gift-registry' },
   ];

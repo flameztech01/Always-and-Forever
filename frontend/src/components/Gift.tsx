@@ -7,8 +7,8 @@ import {
   FaUserCircle,
   FaRegHeart,
   FaStar,
-  FaPhoneAlt,
-  FaEnvelope
+  // FaPhoneAlt,
+  // FaEnvelope
 } from 'react-icons/fa';
 import { BiGift } from 'react-icons/bi';
 import { GiFlowerTwirl } from 'react-icons/gi';
@@ -245,7 +245,7 @@ const Gift = () => {
           </div>
 
           {/* Contact for Gift Issues */}
-          <div className="mt-8 flex justify-center gap-6 text-sm text-gray-500">
+          {/* <div className="mt-8 flex justify-center gap-6 text-sm text-gray-500">
             <div className="flex items-center gap-2">
               <FaPhoneAlt className="text-amber-400" />
               <span>+234 (0) 812 345 6789</span>
@@ -254,7 +254,7 @@ const Gift = () => {
               <FaEnvelope className="text-amber-400" />
               <span>gift@wedding.com</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
