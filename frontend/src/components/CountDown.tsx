@@ -36,7 +36,7 @@ const CountDown = () => {
         setTraditionalTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       } else {
         setTraditionalTimeLeft({
-          days: Math.floor(traditionalDistance / (1000 * 60 * 60 * 24)),
+          days: 24,
           hours: Math.floor((traditionalDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
           minutes: Math.floor((traditionalDistance % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((traditionalDistance % (1000 * 60)) / 1000)
@@ -256,8 +256,8 @@ const CountDown = () => {
             {/* Traditional Wedding */}
             <EventCard
               title="Traditional Wedding"
-              date="March 19, 2026"
-              time="4:00 PM"
+              date="March 18, 2026"
+              time="12:00 PM"
               venue="House 3, Road E"
               address={[
                 "All Saints Community, Phase 1, Ogombo",
@@ -272,7 +272,7 @@ const CountDown = () => {
             <EventCard
               title="White Wedding"
               date="March 21, 2026"
-              time="11:00 AM" // Assuming 11:00 AM - please adjust if different
+              time="10:00 AM" 
               venue="Christ Embassy Isheri"
               address={[
                 "No 8 Channels TV Road, Opic Estate",

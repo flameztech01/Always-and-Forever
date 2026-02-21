@@ -5,6 +5,7 @@ import Gallery from "../components/Gallery"
 import Details from "../components/Details"
 import Venue from '../components/Venue'
 import Gift from '../components/Gift'
+import RSVP from '../components/RSVP'
 import Footer from '../components/Footer'
 
 const Homepage = () => {
@@ -15,11 +16,14 @@ const Homepage = () => {
       <CountDown />
       <Gallery />
       <Details />
-      <section id='rsvp'>
+      <section id='venue'>
         <Venue />
       </section>
       <section id='gift-registry'>
         <Gift />
+      </section>
+      <section id="rsvp">
+        <RSVP />
       </section>
       <Footer />
     </div>

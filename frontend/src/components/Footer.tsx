@@ -2,16 +2,10 @@ import {
   FaHeart, 
   FaRing, 
   FaCalendarAlt, 
-  FaMapMarkerAlt,
-  FaPhone,
-  FaEnvelope,
-  FaInstagram,
-  FaFacebook,
-  FaTwitter,
-  FaWhatsapp,
   FaStar
 } from 'react-icons/fa';
 import { GiFlowerTwirl } from 'react-icons/gi';
+import { MdMessage } from 'react-icons/md';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -70,19 +64,13 @@ const Footer = () => {
             <p className="text-amber-200/80 text-sm leading-relaxed mb-4">
               Joined in love, celebrating forever. Thank you for being part of our journey and sharing in our joy.
             </p>
-            <div className="flex justify-center md:justify-start gap-3">
-              <a href="#" className="bg-amber-800/50 hover:bg-amber-700 p-2 rounded-full transition-colors duration-300">
-                <FaInstagram className="text-amber-300 hover:text-white text-lg" />
-              </a>
-              <a href="#" className="bg-amber-800/50 hover:bg-amber-700 p-2 rounded-full transition-colors duration-300">
-                <FaFacebook className="text-amber-300 hover:text-white text-lg" />
-              </a>
-              <a href="#" className="bg-amber-800/50 hover:bg-amber-700 p-2 rounded-full transition-colors duration-300">
-                <FaTwitter className="text-amber-300 hover:text-white text-lg" />
-              </a>
-              <a href="#" className="bg-amber-800/50 hover:bg-amber-700 p-2 rounded-full transition-colors duration-300">
-                <FaWhatsapp className="text-amber-300 hover:text-white text-lg" />
-              </a>
+            {/* Removed social media links - replaced with decorative hearts */}
+            <div className="flex justify-center md:justify-start gap-2">
+              <FaHeart className="text-amber-600/30 text-lg" />
+              <FaHeart className="text-amber-500/40 text-xl" />
+              <FaHeart className="text-amber-400/60 text-2xl" />
+              <FaHeart className="text-amber-500/40 text-xl" />
+              <FaHeart className="text-amber-600/30 text-lg" />
             </div>
           </div>
 
@@ -132,7 +120,7 @@ const Footer = () => {
                   <FaCalendarAlt className="text-amber-400 text-xs" />
                 </div>
                 <div className="text-left">
-                  <p className="text-xs text-amber-300">Traditional</p>
+                  <p className="text-xs text-amber-300">Traditional Wedding</p>
                   <p className="text-sm text-white">March 19, 2026 • 4:00 PM</p>
                 </div>
               </li>
@@ -141,38 +129,37 @@ const Footer = () => {
                   <FaCalendarAlt className="text-amber-400 text-xs" />
                 </div>
                 <div className="text-left">
-                  <p className="text-xs text-amber-300">White Wedding</p>
+                  <p className="text-xs text-amber-300">Church Wedding</p>
                   <p className="text-sm text-white">March 21, 2026 • 11:00 AM</p>
                 </div>
               </li>
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* RSVP/Message Column - Replaced Contact Info */}
           <div className="text-center md:text-left">
-            <h4 className="font-serif text-lg text-white mb-4 pb-2 border-b border-amber-700/50">Contact Us</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center justify-center md:justify-start gap-2">
-                <div className="bg-amber-800/50 p-1.5 rounded-full">
-                  <FaPhone className="text-amber-400 text-xs" />
+            <h4 className="font-serif text-lg text-white mb-4 pb-2 border-b border-amber-700/50">Kindly RSVP</h4>
+            <div className="bg-amber-800/30 rounded-lg p-4 border border-amber-700/30">
+              <div className="flex justify-center md:justify-start mb-3">
+                <div className="bg-amber-700/50 p-2 rounded-full">
+                  <MdMessage className="text-amber-300 text-xl" />
                 </div>
-                <span className="text-sm text-amber-200/80">+234 (0) 812 345 6789</span>
-              </li>
-              <li className="flex items-center justify-center md:justify-start gap-2">
-                <div className="bg-amber-800/50 p-1.5 rounded-full">
-                  <FaEnvelope className="text-amber-400 text-xs" />
-                </div>
-                <span className="text-sm text-amber-200/80">rsvp@wedding.com</span>
-              </li>
-              <li className="flex items-start justify-center md:justify-start gap-2">
-                <div className="bg-amber-800/50 p-1.5 rounded-full mt-1">
-                  <FaMapMarkerAlt className="text-amber-400 text-xs" />
-                </div>
-                <span className="text-sm text-amber-200/80 text-left">
-                  Lagos, Nigeria
-                </span>
-              </li>
-            </ul>
+              </div>
+              <p className="text-sm text-amber-200/90 mb-3">
+                Your presence is the greatest gift. Please let us know if you'll be joining us.
+              </p>
+              <button 
+                onClick={() => scrollToSection('rsvp')}
+                className="w-full bg-gradient-to-r from-amber-600 to-amber-500 text-white text-sm py-2 px-4 rounded-lg hover:from-amber-500 hover:to-amber-400 transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                Click to RSVP
+              </button>
+              <div className="mt-3 text-xs text-amber-400/70 flex items-center justify-center gap-1">
+                <FaHeart className="text-amber-500 text-xs" />
+                <span>We can't wait to celebrate with you!</span>
+                <FaHeart className="text-amber-500 text-xs" />
+              </div>
+            </div>
           </div>
         </div>
 

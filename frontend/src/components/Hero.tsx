@@ -78,8 +78,8 @@ const Hero = () => {
                   <FaCalendarAlt className="text-amber-400 text-xl" />
                 </div>
                 <div className="text-left">
-                  <p className="text-xs text-amber-300/80 font-light mb-1">TRADITIONAL • MARCH 19, 2026</p>
-                  <p className="font-serif text-lg md:text-xl text-white">4:00 PM</p>
+                  <p className="text-xs text-amber-300/80 font-light mb-1">TRADITIONAL • MARCH 18, 2026</p>
+                  <p className="font-serif text-lg md:text-xl text-white">12:00 PM</p>
                 </div>
               </div>
 
@@ -106,7 +106,7 @@ const Hero = () => {
                 </div>
                 <div className="text-left">
                   <p className="text-xs text-amber-300/80 font-light mb-1">WHITE WEDDING • MARCH 21, 2026</p>
-                  <p className="font-serif text-lg md:text-xl text-white">Time TBA</p>
+                  <p className="font-serif text-lg md:text-xl text-white">10:00 AM</p>
                 </div>
               </div>
 

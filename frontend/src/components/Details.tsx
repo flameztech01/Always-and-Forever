@@ -3,10 +3,6 @@ import {
   FaRing, 
   FaCalendarAlt, 
   FaClock, 
-  FaPhone, 
-  FaRegEnvelope,
-  FaStar,
-  FaRegHeart,
   FaMapMarkerAlt
 } from 'react-icons/fa';
 import { 
@@ -14,6 +10,7 @@ import {
   MdChurch, 
   MdCelebration 
 } from 'react-icons/md';
+import { FaStar, FaRegHeart } from 'react-icons/fa';
 import { GiFlowerTwirl } from 'react-icons/gi';
 
 const Details = () => {
@@ -22,8 +19,8 @@ const Details = () => {
       id: 1,
       title: "Traditional Wedding",
       icon: <MdAttractions className="text-4xl" />,
-      time: "4:00 PM",
-      date: "Thursday, March 19th, 2026",
+      time: "12:00 PM",
+      date: "Thursday, March 18th, 2026",
       venue: "House 3, Road E",
       address: [
         "All Saints Community, Phase 1, Ogombo",
@@ -37,7 +34,7 @@ const Details = () => {
       id: 2,
       title: "White Wedding",
       icon: <MdChurch className="text-4xl" />,
-      time: "11:00 AM",
+      time: "10:00 AM",
       date: "Saturday, March 21st, 2026",
       venue: "Christ Embassy Isheri",
       address: [
@@ -213,51 +210,6 @@ const Details = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Contact Information Card */}
-        <div className="max-w-3xl mx-auto mt-16">
-          <div className="relative bg-gradient-to-r from-amber-100/50 to-amber-200/50 backdrop-blur-sm rounded-3xl p-8 border border-amber-300 shadow-xl">
-            {/* Decorative elements */}
-            <div className="absolute -top-3 -left-3">
-              <FaStar className="text-amber-400 text-2xl animate-spin-slow" />
-            </div>
-            <div className="absolute -bottom-3 -right-3">
-              <FaHeart className="text-amber-400 text-2xl animate-pulse" />
-            </div>
-
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              {/* Invitation Inquiries */}
-              <div className="flex items-center gap-4">
-                <div className="bg-white p-4 rounded-full shadow-md">
-                  <FaRegEnvelope className="text-2xl text-amber-600" />
-                </div>
-                <div>
-                  <p className="text-sm text-amber-700 font-light">INVITATION INQUIRIES</p>
-                  <p className="font-serif text-gray-700">rsvp@wedding.com</p>
-                </div>
-              </div>
-
-              {/* Decorative divider */}
-              <div className="hidden md:block w-px h-12 bg-gradient-to-b from-transparent via-amber-400 to-transparent" />
-
-              {/* Questions */}
-              <div className="flex items-center gap-4">
-                <div className="bg-white p-4 rounded-full shadow-md">
-                  <FaPhone className="text-2xl text-amber-600" />
-                </div>
-                <div>
-                  <p className="text-sm text-amber-700 font-light">QUESTIONS?</p>
-                  <p className="font-serif text-gray-700">+234 (0) 123 456 789</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Note */}
-            <div className="mt-6 text-center text-sm text-gray-600 bg-white/60 p-3 rounded-xl">
-              <span className="font-medium text-amber-700">Note:</span> All events are strictly by invitation.
-            </div>
-          </div>
         </div>
 
         {/* Save the Date Button */}
