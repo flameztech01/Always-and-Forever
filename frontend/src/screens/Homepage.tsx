@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar"
 import Hero from '../components/Hero'
-import CountDown from '../components/CountDown'
+// import CountDown from '../components/CountDown'
 import Gallery from "../components/Gallery"
 import Details from "../components/Details"
 import Venue from '../components/Venue'
@@ -15,7 +15,8 @@ const Homepage = () => {
     <div>
       <Navbar />
       <Hero />
-      <CountDown />
+        <DownloadBooklet />
+      {/* <CountDown /> */}
       <Gallery />
       <Details />
       <section id='venue'>
@@ -24,7 +25,7 @@ const Homepage = () => {
       <section id='gift-registry'>
         <Gift />
       </section>
-      <DownloadBooklet />
+    
       <section id="rsvp">
         <RSVP />
       </section>
