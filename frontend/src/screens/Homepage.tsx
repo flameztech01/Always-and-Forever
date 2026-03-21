@@ -8,6 +8,8 @@ import Gift from '../components/Gift'
 import RSVP from '../components/RSVP'
 import Footer from '../components/Footer'
 
+import DownloadBooklet from "../components/DownloadBooklet"
+
 const Homepage = () => {
   return (
     <div>
@@ -22,6 +24,7 @@ const Homepage = () => {
       <section id='gift-registry'>
         <Gift />
       </section>
+      <DownloadBooklet />
       <section id="rsvp">
         <RSVP />
       </section>

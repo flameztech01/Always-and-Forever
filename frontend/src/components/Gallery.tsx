@@ -13,7 +13,7 @@ const Gallery = () => {
   const galleryData = [
     {
       id: 1,
-      src: '/couples.jpeg',
+      src: '/picture1.png',
       alt: 'Romantic couple portrait in golden hour',
       title: 'Golden Sunset',
       category: 'Couple',
@@ -23,7 +23,7 @@ const Gallery = () => {
     },
     {
       id: 2,
-      src: '/couples2.jpeg',
+      src: '/wedding2.png',
       alt: 'Candid moment of couple laughing',
       title: 'Joyful Laughter',
       category: 'Candid',
@@ -33,7 +33,7 @@ const Gallery = () => {
     },
     {
       id: 3,
-      src: '/couples3.jpeg',
+      src: '/wedding3.png',
       alt: 'Couple holding hands',
       title: 'Hand in Hand',
       category: 'Romantic',
@@ -43,7 +43,7 @@ const Gallery = () => {
     },
     {
       id: 4,
-      src: '/couples4.jpeg',
+      src: '/wedding4.png',
       alt: 'Couple dancing',
       title: 'First Dance',
       category: 'Celebration',
@@ -53,7 +53,7 @@ const Gallery = () => {
     },
     {
       id: 5,
-      src: '/couples5.jpeg',
+      src: '/wedding5.png',
       alt: 'Couple sharing an intimate moment',
       title: 'Tender Moment',
       category: 'Intimate',
@@ -63,7 +63,7 @@ const Gallery = () => {
     },
     {
       id: 6,
-      src: '/couples6.jpeg',
+      src: '/wedding6.png',
       alt: 'Couple walking through fields',
       title: 'Endless Love',
       category: 'Outdoor',
@@ -73,7 +73,7 @@ const Gallery = () => {
     },
     {
       id: 7,
-      src: '/couples7.jpeg',
+      src: '/wedding7.png',
       alt: 'Couple portrait with city background',
       title: 'City Lights',
       category: 'Urban',
@@ -83,7 +83,7 @@ const Gallery = () => {
     },
     {
       id: 8,
-      src: '/couples8.jpeg',
+      src: '/wedding2.png',
       alt: 'Couple under fairy lights',
       title: 'Magical Evening',
       category: 'Evening',
@@ -93,7 +93,7 @@ const Gallery = () => {
     },
     {
       id: 9,
-      src: '/couples9.jpeg',
+      src: '/wedding4.png',
       alt: 'Couple embracing',
       title: 'Forever Embrace',
       category: 'Romantic',
@@ -222,23 +222,6 @@ const Gallery = () => {
             A glimpse into our journey of love, laughter, and happily ever after
           </p>
 
-          {/* Category Filter - Optional: Uncomment to enable filtering */}
-          {/* <div className="flex flex-wrap justify-center gap-3 mt-8">
-            {categories.map(category => (
-              <button
-                key={category}
-                onClick={() => setFilterCategory(category)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filterCategory === category
-                    ? 'bg-amber-500 text-white shadow-lg'
-                    : 'bg-white text-gray-600 hover:bg-amber-100'
-                }`}
-              >
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </button>
-            ))}
-          </div> */}
-
           {/* Decorative hearts */}
           <div className="flex justify-center gap-2 mt-4">
             <FaHeart className="text-amber-300 text-sm" />
@@ -249,7 +232,7 @@ const Gallery = () => {
           </div>
         </div>
 
-        {/* Gallery Grid */}
+        {/* Gallery Grid - Fixed height cards to prevent half images */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {displayImages.map((image, index) => (
             <div
@@ -257,12 +240,14 @@ const Gallery = () => {
               className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer"
               onClick={() => openLightbox(index)}
             >
-              {/* Image Container */}
-              <div className="relative aspect-w-4 aspect-h-5">
+              {/* Fixed aspect ratio container - ensures consistent card sizes */}
+              <div className="relative w-full aspect-[4/5]">
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  // object-cover ensures the image fills the entire container without distortion
+                  // It will crop to fit, eliminating any "half half" issues
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 
                 {/* Gold Overlay on Hover */}
@@ -272,7 +257,7 @@ const Gallery = () => {
                 <div className="absolute inset-0 border-2 border-transparent group-hover:border-amber-400/50 rounded-2xl transition-all duration-500 m-[2px]" />
                 
                 {/* Photo Badge with Category */}
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-amber-700 font-medium border border-amber-200 transform -translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-amber-700 font-medium border border-amber-200 transform -translate-y-12 group-hover:translate-y-0 transition-transform duration-300 z-10">
                   <span className="flex items-center gap-1">
                     <FaHeart className="text-xs" />
                     {image.category}
@@ -281,20 +266,20 @@ const Gallery = () => {
                 
                 {/* Location Badge */}
                 {image.location && (
-                  <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
                     📍 {image.location}
                   </div>
                 )}
                 
                 {/* Zoom Icon on Hover */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
                   <div className="bg-white/90 backdrop-blur-sm p-4 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-500 border-2 border-amber-400">
                     <FaSearchPlus className="text-2xl text-amber-600" />
                   </div>
                 </div>
                 
                 {/* Image Info */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-10">
                   <p className="text-white font-serif text-lg">{image.title}</p>
                   <div className="flex items-center justify-between mt-1">
                     <p className="text-amber-200 text-sm">{image.date}</p>
